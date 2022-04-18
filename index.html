@@ -1,0 +1,68 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+
+        <canvas id="canvas" width="1000" height="600">
+        </canvas>
+
+        <script>
+            let canvasElement = document.getElementById("canvas");
+            let context = canvasElement.getContext("2d");
+            
+            const squareSize = 240
+            const lineWidth = squareSize/40;
+            context.strokeStyle = "charcoal";
+            context.lineWidth = lineWidth;
+
+            
+            const padding = 40
+
+
+            function fillBox(x, y, angle){
+                context.save();
+
+                context.fillStyle = "beige";
+                context.beginPath();
+                context.rect(x, y, squareSize, squareSize);
+                context.fill();
+                context.stroke();
+
+
+                context.beginPath();
+                context.rect(x, y, squareSize, squareSize);
+                context.clip();
+
+                context.translate(x + squareSize/2, y + squareSize/2);
+                
+                context.rotate(angle);
+
+                for (let i = -squareSize; i < squareSize; i = i+2*lineWidth){
+                    context.beginPath();
+                    context.moveTo(-squareSize*Math.SQRT2/2, i);
+                    context.lineTo(squareSize*Math.SQRT2, i);
+                    context.stroke();
+
+                };
+                
+                context.restore();
+            }
+           
+            const angles = [0, .5*Math.PI, .25*Math.PI, -.25*Math.PI ]
+            
+            function randomAngle(){
+                return angles[Math.floor(4*Math.random())]
+            };
+           
+            
+            fillBox(padding, padding, randomAngle());
+            fillBox(squareSize + padding, padding, randomAngle());
+            fillBox(padding, squareSize + padding, randomAngle());
+            fillBox(squareSize + padding, squareSize + padding, randomAngle());
+
+            
+
+        </script>
+    </body>
+</html>
