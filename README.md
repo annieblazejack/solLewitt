@@ -1,0 +1,3 @@
+## What is this? 
+
+This HTML file contains JavaScript that draws four masking squares inside of a canvas. Each square is striped with vertical, horizontal, or diagonal lines. This is an expansion upon Sol Lewitt's original 1982 drawing because whenever the 'Make it again' button is clicked, the stripe direction in each square is randomly reassigned. It can create every possible combination of stripe directions.
